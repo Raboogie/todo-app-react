@@ -18,3 +18,7 @@ body {
   height: 300px;
   width: 100%;
 }
+
+.todo-list:last-child {
+  border-bottom: none;
+}
