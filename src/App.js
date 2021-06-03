@@ -1,9 +1,14 @@
 import "tailwindcss/tailwind.css"
+import Logo from "./components/Logo";
+import Hero from "./components/Hero";
 
 const App = () => {
   return (
     <>
-      <h1>Todo</h1>
+      <main>
+        <Logo/>
+        <Hero/>
+      </main>
     </>
   );
 }

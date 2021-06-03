@@ -1,7 +1,7 @@
 const List = () => {
   return (
       <>
-      <h2 className="font-bold text-4xl">List components</h2>
+      <h2 className="font-bold text-4xl">List component</h2>
       </>
   )
 }
