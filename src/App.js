@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import "tailwindcss/tailwind.css"
 import Logo from "./components/Logo";
 import Hero from "./components/Hero";
@@ -6,9 +6,19 @@ import List from "./components/List";
 
 import {v4 as uuidv4} from "uuid";
 
+const getLocalStorage = () => {
+    let items = localStorage.getItem("items")
+
+    if (items) {
+        return JSON.parse(localStorage.getItem("items"));
+    } else {
+        return []
+    }
+}
+
 const App = () => {
     const [text, setText] = useState("");
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getLocalStorage());
 
     const textChangHandler = (event) => {
         setText(event.target.value);
@@ -30,6 +40,11 @@ const App = () => {
         // filter over every item in the array and check for the item.id that does not match and return those
         setItems(items.filter((item) => item.id !== id));
     };
+
+    useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(items))
+        // with the deps being items, this means that everytime the items change then local storage is going to be updated
+    }, [items])
 
   return (
     <>
